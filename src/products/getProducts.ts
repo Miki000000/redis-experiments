@@ -12,6 +12,6 @@ export function getProducts(req: BunRequest) {
     case "favorites":
       return getFavoriteProducts(user_id);
     default:
-      throw Error("This search param does not exists");
+      return Response.json({ message: "Not found" }, { status: 404 });
   }
 }

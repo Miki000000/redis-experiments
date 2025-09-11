@@ -1,7 +1,7 @@
 import { redis, type BunRequest } from "bun";
 import { checkUserId } from "../shared/checkUserId";
 
-export async function addProduct(req: BunRequest<"/products/:id">): Promise<Response> {
+export async function addProduct(req: BunRequest<"/products">): Promise<Response> {
   const { user_id } = checkUserId(req.headers.get("user_id"));
   const { product_name, quantity } = (await req.json()) as {
     product_name: string;

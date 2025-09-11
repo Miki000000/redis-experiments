@@ -12,7 +12,7 @@ export async function getProductById(req: BunRequest<"/products/:id">): Promise<
   ]);
 
   if (!id || !product_name || !quantity) return Response.json({ message: "Not found" }, { status: 404 });
-  if (product_user_id !== user_id) return Response.json({ message: "User does not own this product" }, { status: 401 });
+  if (product_user_id && product_user_id !== user_id) return Response.json({ message: "User does not own this product" }, { status: 403 });
 
   await redis.send("LPUSH", [`user:${user_id}:recents`, product_id]);
   await redis.send("LTRIM", [`user:${user_id}:recents`, "0", "49"]);

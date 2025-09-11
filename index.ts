@@ -6,12 +6,12 @@ serve({
   routes: {
     "/products/:id": {
       GET: async (req) => await getProductById(req),
-      POST: async (req) => await addProduct(req),
     },
     "/products/favorites/:id": {
       POST: async (req) => favoriteProductById(req),
     },
     "/products": {
+      POST: async (req) => await addProduct(req),
       GET: async (req) => getProducts(req),
     },
   },
