@@ -6,7 +6,7 @@ I’m doing this to understand **Redis itself**—its data types, semantics, and
 
 ---
 
-## [1) Fundamentals — Catalog, Favorites & Discovery](.../tree/redis/basics)
+## [1) Fundamentals — Catalog, Favorites & Discovery](https://github.com/Miki000000/redis-experiments/tree/redis/basics)
 
 **Learning Goals**
 - **Strings**: atomic counters (`INCR`/`DECR`), read/write patterns, idempotent updates, and how counters interact with other structures.
@@ -62,7 +62,9 @@ This repo is **not** about app design; it’s a place to learn Redis types, comm
 ---
 
 ### Obs
-- The only porpuse of this repository is to learn and explore Redis, this is why i'm trying to not focus in Software Architecture or good practices A LOT, as it is not my main intent for this(even tho i try to do it in the most readable way i can)
+- The only purpose of this repository is to learn and explore Redis. I’m intentionally not focusing on software architecture or formal best practices here (though I’ll keep things readable as best as I can).
+- I’ll keep it simple and write descriptive commits. I won’t strictly follow branch or commit naming conventions (you should in real projects).
+
 
 ---
 
