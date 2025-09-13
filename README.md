@@ -2,6 +2,8 @@
 
 I’m doing this to understand **Redis itself**—its data types, semantics, and operational behavior. The branches exist only as small experiments. I’m using Bun’s built‑in client (`Bun.redis`) to keep the setup minimal.
 
+> **Real‑world usability:** Each experiment includes a small project that is usable in real scenarios (not just toy code). I’ll build them with the best of my current skills and a production‑leaning mindset, while keeping the primary goal: learning Redis.
+
 > Each project title links to a branch in this repo that contains the experiment for that topic. (Links are placeholders until I push the branches.)
 
 ---
@@ -13,7 +15,7 @@ I’m doing this to understand **Redis itself**—its data types, semantics, and
 - **Hashes**: field‑level updates (`HSET`), partial reads (`HMGET`/`HGETALL`), small‑hash memory behavior, and key naming conventions.
 - **Lists**: head/tail operations (`LPUSH`/`RPUSH`, `LPOP`/`RPOP`), fixed‑length lists via `LPUSH` + `LTRIM`, and cost of ranged reads.
 - **Sets**: membership and de‑duplication (`SADD`/`SREM`/`SISMEMBER`), cardinality, and typical read paths.
-- **Sorted Sets**: score‑based ordering, `ZINCRBY`, range queries (`ZREVRANGE`, `ZRANGE`/`BYSCORE`), score precision and tiebreak rules.
+- **Sorted Sets**: score‑based ordering, `ZINCRBY`, range queries (`ZREVRANGE`, `ZRANGE BYSCORE`), score precision and tiebreak rules.
 - Cross‑cutting: predictable key schemas, batching strategies for many reads, and basic consistency trade‑offs between counters, ranks, and lists.
 
 ---
@@ -41,7 +43,7 @@ I’m doing this to understand **Redis itself**—its data types, semantics, and
 
 **Learning Goals**
 - **Streams core**: message IDs, `XADD`, trimming (`XTRIM`) to bound memory, and range scans.
-- **Consumer Groups**: `XGROUP`, `XREADGROUP (>)`, pending lists, `XACK`, `XPENDING`, `XCLAIM` (min‑idle), reclaim strategies.
+- **Consumer Groups**: `XGROUP`, `XREADGROUP (>)`, pending lists, `XACK`, `XPENDING`, `XCLAIM`/`XAUTOCLAIM` (min‑idle), reclaim strategies.
 - **Delivery model**: at‑least‑once semantics, idempotent handlers, retry/DLQ patterns, and monitoring basics for stuck/slow consumers.
 
 ---
@@ -57,14 +59,13 @@ I’m doing this to understand **Redis itself**—its data types, semantics, and
 
 ### Scope
 
-This repo is **not** about app design; it’s a place to learn Redis types, commands, and behaviors by running small, isolated experiments in Bun.
+This repo is **not** about app design; it’s a place to learn Redis types, commands, and behaviors by running small, isolated experiments in Bun. Each branch ships a minimal yet usable project that demonstrates the Redis concept in a realistic scenario.
 
 ---
 
 ### Obs
 - The only purpose of this repository is to learn and explore Redis. I’m intentionally not focusing on software architecture or formal best practices here (though I’ll keep things readable as best as I can).
 - I’ll keep it simple and write descriptive commits. I won’t strictly follow branch or commit naming conventions (you should in real projects).
-
 
 ---
 
