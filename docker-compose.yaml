@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    profiles: [test]
+    command: ["bun", "test"]
+    tty: true
+    stdin_open: true
+    environment:
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+  redis:
+    image: redis:7-alpine
+    profiles: [test]

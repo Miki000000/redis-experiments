@@ -22,5 +22,5 @@ export async function addProduct(req: BunRequest<"/products">): Promise<Response
   if (response !== "OK") return Response.json({ message: "Failed to add product" }, { status: 500 });
 
   await redis.send("ZADD", ["product:popular:rank", "0", product_id]);
-  return Response.json({ message: `Product added with success: ${product_id}` }, { status: 201 });
+  return Response.json({ message: `Product added with success: ${product_id}`, data: { product_id } }, { status: 201 });
 }

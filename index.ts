@@ -12,7 +12,7 @@ serve({
     },
     "/products": {
       POST: async (req) => await addProduct(req),
-      GET: async (req) => getProducts(req),
+      GET: async (req) => await getProducts(req),
     },
   },
   error(error) {
